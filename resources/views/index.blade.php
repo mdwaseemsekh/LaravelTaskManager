@@ -30,7 +30,7 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success mr-4" type="submit">Search</button>
       </form>
-      <a href="{{route('logout')}}"><button class=" btn btn-danger ml-4" >
+      <a href="{{route('logout')}}"><button class=" btn btn-danger mx-4" >
         Log Out</button></a>
     </div>
   </div>
@@ -39,15 +39,20 @@
 
 
 <div class="form-container container mt-4 pt-4 mb-3">
+  <div class="card">
+    <div class="card-header">
+  
     @if(session()->has('status'))
-    {{session()->get('status')}}
+    <li class="alert alert-success">{{session()->get('status')}}</li>
     @endif
     <h4>Add New Task</h4>
     @if($errors->any())
     @foreach($errors->all() as $error)
-    <li>{{$error}}</li>
+    <li class="alert alert-danger">{{$error}}</li>
     @endforeach
     @endif
+    </div>
+    <div class="card-body">
     <form action="{{route('createTask')}}" method="post">
         @csrf
         <label for="title" class="form-label"><b>Task Title :</b></label>
@@ -57,6 +62,8 @@
         <input type="text" name="description" class="form-control" placeholder="Enter Your Task Description">
         <input type="submit" class="btn btn-success mt-2" value="Submit">
     </form>
+    </div>
+</div>
 </div>
 
 <hr>

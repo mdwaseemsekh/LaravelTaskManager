@@ -84,6 +84,8 @@ class TaskManagerController extends Controller
         if($task->status=="Pending"){
         $task->status = "Done";
         $task->save();
+        
+        return redirect()->to('/')->with('status','Task Status Updated Success');
         }
         else{
         $task->status = "Pending";
